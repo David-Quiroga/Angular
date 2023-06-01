@@ -5,6 +5,8 @@ import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 import { PagesComponent } from './pages.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -12,16 +14,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CategoryComponent,
     ProductComponent,
     PagesComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule, SharedModule, RouterModule],
   exports: [
     DashboardComponent,
     CategoryComponent,
     ProductComponent,
-    PagesComponent
+    PagesComponent,
   ],
 })
-export class PagesModule { }
+export class PagesModule {}
