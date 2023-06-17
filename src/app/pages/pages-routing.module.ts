@@ -22,6 +22,8 @@ const routes:Routes = [
    //{path:'**', component:NoPagesFoundComponent},
   ]},
   ]
+
+  
 @NgModule({
   declarations: [],
   imports: [
