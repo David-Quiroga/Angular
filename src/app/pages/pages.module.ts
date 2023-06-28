@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoryComponent } from './category/category.component';
-import { ProductComponent } from './product/product.component';
+import { ProductsComponent } from './product/product.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
@@ -13,7 +13,7 @@ import { PacienteComponent } from './paciente/paciente.component';
   declarations: [
     DashboardComponent,
     CategoryComponent,
-    ProductComponent,
+    ProductsComponent,
     PagesComponent,
     PacienteComponent,
     DoctorComponent,
@@ -26,7 +26,7 @@ import { PacienteComponent } from './paciente/paciente.component';
   exports: [
     DashboardComponent,
     CategoryComponent,
-    ProductComponent,
+    ProductsComponent,
     PagesComponent,
   ],
 })

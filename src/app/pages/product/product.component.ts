@@ -1,86 +1,74 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { Component, OnInit } from '@angular/core';
+import { CreateProductDto, ProductModel, UpdateProductDto } from 'src/app/models/product.model';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
+export class ProductsComponent implements OnInit {
+   products:ProductModel[] = [];
+   selectedProduct: UpdateProductDto = {} ;
 
-export class ProductComponent {
-  // Inyeccion de dependencias, similar a intanciar un objeto
-  constructor(private httpClient: HttpClient) { }
+  constructor(private productService:ProductService) {
+   this.initProduct;
+  }
 
-  // Método NgOnInit similar al constructor, se ejecuta despues del constructor
-  ngOnInit() {
-    //this.getProducts();
+  ngOnInit(): void {
+    this.getProducts();
     //this.getProduct();
     //this.createProduct();
-    this.updateProduct();
-    // this.deleteProduct();
+    //this.updateProduct();
+    //this.deleteProduct();
+  }
+  initProduct(){
+    this.selectedProduct = {title:'', price:0, description:''};
   }
 
-  // Obtener todos los productos
-  getProducts() {
-    // Petición del API y esperando una respuesta
-    // Para traer la data desde el backend
-    // Suscribe para promesas y observables
-    // Se recibe una petición y se asigna una respuesta
-    const url = 'https://api.escuelajs.co/api/v1/products';
-    this.httpClient.get(url).subscribe(
-      response => {
+  getProducts(){
+    const url = "https://api.escuelajs.co/api/v1/products";
+    this.productService.getAll().subscribe(
+      response =>{
+        this.products = response;
         console.log(response);
-      });
+      }
+    )
   }
-
-  // Obtener un producto
-  getProduct() {
-    const url = 'https://api.escuelajs.co/api/v1/products/262';
-    this.httpClient.get(url).subscribe(
-      response => {
+  getProduct(id: ProductModel['id'] ){
+    const url = "https://api.escuelajs.co/api/v1/products/id";
+    return this.productService.getOne(id).subscribe(
+      response =>{
         console.log(response);
-      });
+      }
+    )
   }
-
-  // Crear nuevo producto
-  createProduct() {
-    const data = {
-      title: "Shoes Adidas Samba",
-      price: 152.99,
-      description: "zapatos/David Quiroga",
-      categoryId: 2,
-      images: ["https://picsum.photos/640/640?r=4213", "https://picsum.photos/640/640?r=7623", "https://picsum.photos/640/640?r=9048"]
-    }
-
-    const url = 'https://api.escuelajs.co/api/v1/products';
-    this.httpClient.post(url, data).subscribe(
-      response => {
+  createProduct(product: CreateProductDto){
+    this.productService.store(product).subscribe(
+      response =>{
         console.log(response);
-      });
+      }
+    )
   }
-
-  // Actualizar producto
-  updateProduct() {
-    const data = {
-      tittle: "Nike",
-      price: 135.99,
-      description: "Tenis/David Quiroga",
-    }
-
-    const url = 'https://api.escuelajs.co/api/v1/products/262';
-    this.httpClient.put(url, data).subscribe(
-      response => {
+  updateProduct(id: ProductModel['id'], product:UpdateProductDto){
+    this.productService.update(id, product).subscribe(
+      response =>{
         console.log(response);
-      });
+      }
+    )
   }
+  editProduct(product: ProductModel) {
+        this.selectedProduct = { title: '', price: 0, description: '' };
+  }
 
-  // Eliminar producto
-  deleteProduct() {
-    const url = 'https://api.escuelajs.co/api/v1/products/262';
-    this.httpClient.delete(url).subscribe(
-      response => {
+
+  deleteProduct(id: ProductModel['id']){
+    this.productService.destroy(id).subscribe(
+      response =>{
+        this.products = this.products.filter(product => product.id != id);
         console.log(response);
-      });
+      }
+    )
   }
-
 }
+

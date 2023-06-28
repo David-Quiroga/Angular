@@ -1,35 +1,82 @@
-<div class="login-box card" id="card">
-  <div class="card-body">
-      <form class="form-horizontal form-material" id="loginform" action="index.html">
-          <a href="javascript:void(0)" class="text-center db"><img src="./assets/images/products.png" alt="Home"
-                  class="imagen" /><br /></a>
-          <h3 class="box-title m-t-40 m-b-0">Productos</h3><small>Ingrese y cree un registro de productos</small>
-          <div class="form-group m-t-20">
-              <div class="col-xs-12">
-                  <input class="form-control" type="text" required="" placeholder="Nombre">
+<div class="container">
+
+  <div class="card">
+      <div class="card-header">Crear producto</div>
+      <div class="card-body">
+          <form action="">
+              <div class="mb-3">
+                  <label for="tittle" class="form-label">Nombre del producto</label>
+                  <input type="text" name="" id="tittle" class="form-control" placeholder="Nombre del producto">
               </div>
-          </div>
-          <div class="form-group ">
-              <div class="col-xs-12">
-                  <input class="form-control" type="text" required="" placeholder="Codigo de barras">
+              <div class="mb-3">
+                  <label for="price" class="form-label">Precio</label>
+                  <input type="text" name="" id="price" class="form-control" placeholder="Precio del producto">
               </div>
-          </div>
-          <div class="form-group ">
-              <div class="col-xs-12">
-                  <input class="form-control" type="password" required="" placeholder="Fecha caducidad">
+              <div class="mb-3">
+                  <label for="description" class="form-label">Descripción</label>
+                  <textarea class="form-control" name="" placeholder="Descripción del producto" id="description"
+                      cols="30"></textarea>
               </div>
-          </div>
-          <div class="form-group">
-              <div class="col-xs-12">
-                  <input class="form-control" type="password" required="" placeholder="Precio de venta">
+              <div>
+                  <!-- <button class="bnt btn-primary" (click)="createProduct(product)">Guardar</button> -->
               </div>
-          </div>
-          <div class="form-group text-center m-t-20">
-              <div class="col-xs-12">
-                  <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light"
-                      type="submit">Guardar</button>
+          </form>
+          <hr>
+          <div class="card">
+              <div class="card-header">Actualizar</div>
+              <div class="card-body">
+                  <form action="">
+                      <div class="mb-3">
+                          <label for="tittle" class="form-label">Nombre del producto</label>
+                          <input type="text" name="" id="tittle" class="form-control" placeholder=""
+                              [value]="selectedProduct.title">
+                      </div>
+                      <div class="mb-3">
+                          <label for="price" class="form-label">Precio</label>
+                          <input type="text" name="" id="price" class="form-control" [value]="selectedProduct.price"
+                              aria-describedby="helpId">
+                      </div>
+                      <div class="mb-3">
+                          <label for="description" class="form-label">Descripción</label>
+                          <textarea class="form-control" name="" id="description" cols="30"
+                              rows="10">{{selectedProduct.description}}</textarea>
+                      </div>
+                      <div>
+                          <!-- <button class="bnt btn-primary" (click)="">Guardar</button> -->
+                      </div>
+                  </form>
+                  <div class="card-footer text-muted">
+                      Footer
+                  </div>
               </div>
-          </div>
-      </form>
+
+
+              <div class="table-responsive">
+                  <table class="table table-primary border:1px">
+                      <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>Producto</th>
+                              <th>Precio</th>
+                              <th>Descripción</th>
+                              <th>Categoria</th>
+                              <th>Imagen</th>
+                              <th>Opciones</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let product of products">
+                              <td>{{product.id}}</td>
+                              <td>{{product.title}}</td>
+                              <td>{{product.price}}</td>
+                              <td>{{product.description}}</td>
+                              <td>{{product.category}}</td>
+                              <td><img src="{{product.images}}" alt="" width="120px" height="120px"></td>
+                              <td><button class="btn btn-danger" (click)="deleteProduct(product.id)">Eliminar</button>
+                              </td>
+                              <td><button class="btn btn-primary" (click)="editProduct(product)">Editar</button></td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
   </div>
-</div>
