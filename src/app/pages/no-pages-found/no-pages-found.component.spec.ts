@@ -6,12 +6,10 @@ describe('NoPagesFoundComponent', () => {
   let component: NoPagesFoundComponent;
   let fixture: ComponentFixture<NoPagesFoundComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ NoPagesFoundComponent ]
-    })
-    .compileComponents();
-
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [NoPagesFoundComponent]
+    });
     fixture = TestBed.createComponent(NoPagesFoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CategoryComponent } from './category/category.component';
-import { ProductsComponent } from './product/product.component';
+import { ProductsComponent } from './products/products.component';
+import { CategoriesComponent } from './categories/categories.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
-import { DoctorComponent } from './doctor/doctor.component';
-import { PacienteComponent } from './paciente/paciente.component';
+
+
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    CategoryComponent,
     ProductsComponent,
-    PagesComponent,
-    PacienteComponent,
-    DoctorComponent,
+    CategoriesComponent,
+    PagesComponent
   ],
   imports: [
     CommonModule,
@@ -25,9 +23,9 @@ import { PacienteComponent } from './paciente/paciente.component';
   ],
   exports: [
     DashboardComponent,
-    CategoryComponent,
     ProductsComponent,
-    PagesComponent,
-  ],
+    CategoriesComponent,
+    PagesComponent
+  ]
 })
-export class PagesModule {}
+export class PagesModule { }

@@ -7,6 +7,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SharedComponent } from './shared.component';
 
 
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -22,8 +23,7 @@ import { SharedComponent } from './shared.component';
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    BreadcrumbsComponent,
-    SharedComponent
-  ],
+    BreadcrumbsComponent
+  ]
 })
 export class SharedModule { }
